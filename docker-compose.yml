@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  duration_bot:
+    build: .
+    restart: always
+    ports:
+      - "172.17.0.1:15009:5000"
+    volumes:
+      - /opt/app/duration_bot/Input:/app/Input
+      - /opt/app/duration_bot/Output:/app/Output
+      - /opt/app/duration_bot/db:/app/db
+      - /opt/app/duration_bot/static:/app/static
+    environment:
+      - DASHBOARD_URL=http://172.17.0.1:15010
+      - DASHBOARD_USER=pipeline_bot
+      - DASHBOARD_PASS=Pipeline2026!
+      - LARK_APP_ID=cli_a9bf7d0d8438dbdc
+      - LARK_APP_SECRET=fLNIH2ElbH9mChpijh4tbeKd36dJHKtq
